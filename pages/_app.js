@@ -1,11 +1,23 @@
 import "../styles/globals.css";
 import Layout from "../components/Layout";
 
-function App({ Component, pageProps }) {
+import App from "next/app";
+
+/*eslint-disable*/
+function App({ Component, pageProps, navData }) {
   return (
-    <Layout>
+    <Layout navData={navData}>
       <Component {...pageProps} />
     </Layout>
   );
 }
+
+App.getInitialProps = async (appContext) => {
+  // Provide the appContext, in order to do 404's
+  const appProps = await App.getInitialProps(appContext);
+  const res = await fetch("https://bucolic-bombolone-857476.netlify.app/api/dogs");
+  const navData = await res.json();
+  return { ...appProps, navData };
+};
+
 export default App;
