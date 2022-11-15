@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+//export default function Henry(){indhold} - another way to use it instead of rcfe
 function Henry() {
   return (
     <>
@@ -15,6 +16,8 @@ function Henry() {
         sizes="(max-width: 768px) 100vw,
              (max-width: 1200px) 50vw,
              400px"
+
+        //you can also use 33vw instead of 400px (on bigger screen the picture gets smaller, on smaller screens the picture gets bigger)
       />
     </>
   );
