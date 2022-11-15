@@ -1,5 +1,6 @@
 // import Anchor from "./Anchor";
 
+/* eslint-disable */
 function Layout({ children }) {
   return (
     <>
@@ -11,6 +12,9 @@ function Layout({ children }) {
             </li>
             <li>
               <a href="/dogs/henry">Henry</a>
+            </li>
+            <li>
+              <a href="/dogs/random-dog">Random Dogs</a>
             </li>
           </ul>
         </nav>
