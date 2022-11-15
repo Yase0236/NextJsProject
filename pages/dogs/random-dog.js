@@ -4,7 +4,7 @@ export default function RndDog({ data }) {
 }
 
 //this function runs on the server
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch("https://dog.ceo/api/breeds/image/random");
   const data = await res.json();
 

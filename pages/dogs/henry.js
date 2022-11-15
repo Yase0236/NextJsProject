@@ -1,21 +1,23 @@
 import Image from "next/image";
-
-//export default function Henry(){indhold} - another way to use it instead of rcfe
-function Henry() {
+/* eslint-disable */
+export default function Henry() {
   return (
     <>
-      <h1>Hi I am Henry</h1>
+      <head>
+        <title>{data.title}</title>
+      </head>
+      <h1>{data.content.heading}</h1>
+      <p>{data.content.text}</p>
       <Image
-        src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e"
-        alt="Cute dog"
-        width="4240"
-        height="2832"
+        src={data.content.image.src}
+        alt={data.content.image.alt}
+        width={data.content.image.width}
+        height={data.content.image.height}
         //Disables lazy load - do that if img is above the page fold priority
 
         priority
-        sizes="(max-width: 768px) 100vw,
-             (max-width: 1200px) 50vw,
-             400px"
+        sizes="(max-width: 700px) 100vw,
+             700px"
 
         //you can also use 33vw instead of 400px (on bigger screen the picture gets smaller, on smaller screens the picture gets bigger)
       />
@@ -23,4 +25,13 @@ function Henry() {
   );
 }
 
-export default Henry;
+export async function getStaticProps() {
+  const res = await fetch("https://bucolic-bombolone-857476.netlify.app/api/dogs/henry");
+  const data = await res.json;
+
+  return {
+    props: {
+      data,
+    },
+  };
+}
